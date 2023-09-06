@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>登录</h2>
+        <form class="login-form" id="login-form">
+            <input type="text" id="username" placeholder="用户名" required>
+            <input type="password" id="password" placeholder="密码" required>
+            <button type="submit">登录</button>
+        </form>
+        <p class="error-message" id="error-message"></p>
+    </div>
+    
+    
+    <script>
+        // 模拟用户数据库，实际应用中需替换为真实数据库
+        const users = [
+            { username: "00001", password: "1015226" },
+            { username: "00002", password: "1015226" },
+            // 添加更多用户
+        ];
+
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // 在用户数据库中查找匹配的用户
+            const user = users.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                // 登录成功
+                document.getElementById("error-message").textContent = "登录成功！";
+                // 在这里可以跳转到其他页面或执行其他操作
+                window.location.href = "https://drive.google.com/drive/folders/1JE2kU2OwC4gQ7iIHnrsfgkCPfl0GYS-B?usp=drive_link"; 
+            } else {
+                // 登录失败
+                document.getElementById("error-message").textContent = "用户名或密码不正确";
+            }
+        });
+    </script>
+</body>
+</html>
